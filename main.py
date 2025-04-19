@@ -24,14 +24,17 @@ def test_Temporary():
 
 
 def test_TempFile():
-    with tempfile.TemporaryFile("w") as t:
-        print(t)
+    with tempfile.NamedTemporaryFile("r+", dir=".cache") as f:
+        f.write("Hi")
+        f.seek(0)
+        d = f.read()
+        print(d)
 
 
 def main():
     # test_mkdtemp() # cons is that have to manually delete temporary dir
     test_Temporary()
-    test_TempFile()
+    # test_TempFile()
 
 
 if __name__ == "__main__":
