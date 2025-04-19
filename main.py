@@ -23,9 +23,15 @@ def test_Temporary():
     print("Dir was deleted?", not os.path.exists(tempdir))
 
 
+def test_TempFile():
+    with tempfile.TemporaryFile("w") as t:
+        print(t)
+
+
 def main():
     # test_mkdtemp() # cons is that have to manually delete temporary dir
     test_Temporary()
+    test_TempFile()
 
 
 if __name__ == "__main__":
